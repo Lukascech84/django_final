@@ -1,17 +1,73 @@
 {% extends "master.html" %}
 
 {% block title %}
-  Profil uživatele: {{ users.jmeno }} {{ users.jmeno }}
+Profil uživatele: {{ users.nickname }}
 {% endblock %}
 
+{% block head %}
+<style>
+    html {
+        background-color: black;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<h1>{{ users.jmeno }} {{ users.prijmeni }}</h1>
 
-<p>Nickname: {{ users.nickname }}</p>
-<p>Telefon: {{ users.telefon }}</p>
-<p>Email: {{ users.email }}</p>
 
-<p>Back to <a href="/list_users">Knihovna</a></p>
+<div class="row bg-dark">
+    <div class="col text-center text-white">
+        <div class="row fw-bold fs-1 p-2"><p>{{ users.nickname.upper }}</p></div>
+        <div class="row fs-5">
+            <div class="col d-flex align-items-center flex-column"><p>Jméno a příjmení:</p></div>
+            <div class="col d-flex align-items-center flex-column">
+                <p>
+                    {{ users.jmeno }} {{ users.prijmeni }}
+                </p>
+            </div>
+        </div>
+        <div class="row fs-5">
+            <div class="col d-flex align-items-center flex-column"><p>Telefon:</p></div>
+            <div class="col d-flex align-items-center flex-column">
+                <p>
+                    {{ users.telefon }}
+                </p>
+            </div>
+        </div>
+        <div class="row fs-5">
+            <div class="col d-flex align-items-center flex-column"><p>Email:</p></div>
+            <div class="col d-flex align-items-center flex-column">
+                <p>
+                    {{ users.email }}
+                </p>
+            </div>
+        </div>
+        <div class="row fs-5">
+            <div class="col d-flex align-items-center flex-column"><p>Datum narození:</p></div>
+            <div class="col d-flex align-items-center flex-column">
+                <p>
+                    {{ users.datum_narozeni }}
+                </p>
+            </div>
+        </div>
+        <div class="row fs-3 p-5 d-flex justify-content-center">
+            <div class="col-4 bg-secondary border border-dark">
+                <a class="text-light fw-bold text-decoration-none" href="/list_users">ZPĚT</a>
+            </div>
+        </div>
+    </div>
+{% if users.bio != "" %}
+    <div class="col text-center text-white">
+        <div class="row fw-bold fs-1 p-2 text-uppercase"><p>o mně:</p></div>
+        <div class="row fs-5">
+            <div class="col d-flex align-items-center flex-column"><p>{{ users.bio }}</p></div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="col d-flex justify-content-end">
+        <img class="m-5" src="{{ users.fotka.url }}" alt="{{ users.id }}" width="256" height="256">
+    </div>
+</div>
+
 
 {% endblock %}

@@ -5,14 +5,12 @@ from .models import Uzivatel, Hra
 
 
 def index(request):
-    hry = Hra.objects.all()
-    return render(request, 'index.html', {'hry': hry})
+    return render(request, 'index.html')
 
 
 def list_users(request):
-    hry = Hra.objects.all()
-    users = Uzivatel.objects.all().values()
-    return render(request, 'list_users.html', {'hry': hry, 'users': users})
+    users = Uzivatel.objects.all()
+    return render(request, 'list_users.html', {'users': users})
 
 
 def list_games(request):

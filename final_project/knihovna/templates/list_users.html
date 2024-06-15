@@ -1,16 +1,39 @@
-{% extends "master.html" %}
+{% extends 'master.html' %}
 
-{% block title %}
-  Knihovna her - Seznam uživatelů
+{% block title %}Seznam Uživatelů{% endblock %}
+
+{% block head %}
+<style>
+    a {
+        text-decoration: none !important;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
-
-<h1>Users</h1>
-
-<ul>
-  {% for user in users %}
-    <li><a href="{% url 'user' user.id %}" class="text-info">{{ user.jmeno }} {{ user.prijmeni }}</a></li>
-  {% endfor %}
-</ul>
+  <h2 class="display-4 text-center text-white"><strong>Seznam Uživatelů</strong></h2>
+  <div class="row mb-2">
+    <div class="col-12">
+    <table class="table table-dark table-striped table-hover table-responsive-lg">
+      <thead>
+        <tr>
+            <th>Fotka</th>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>Nickname</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for user in users %}
+        <tr>
+            <td class="align-middle"><a href="{% url 'user' user.id %}"><img src="{{ user.fotka.url }}" alt="{{ user.id }}" height="64" width="64"/></a></td>
+            <td class="align-middle"><strong><a href="{% url 'user' user.id %}" class="text-info">{{ user.jmeno }}</a></strong></td>
+            <td class="align-middle"><strong><a href="{% url 'user' user.id %}" class="text-info">{{ user.prijmeni }}</a></strong></td>
+            <td class="align-middle"><strong><a href="{% url 'user' user.id %}" class="text-info">{{ user.nickname }}</a></strong></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
 {% endblock %}

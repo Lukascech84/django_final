@@ -4,10 +4,78 @@
   O hře: {{ hry.nazev }}
 {% endblock %}
 
+{% block head %}
+  <style>
+    html {
+      background-color: black;
+    }
+  </style>
+{% endblock %}
+
 
 {% block content %}
-<h1>{{ hry.nazev }}</h1>
 
-<p>Back to <a href="/">Zpet</a></p>
+<div class="row bg-dark">
+  <div class="col-8 text-center"><img src="{{ hry.fotka.url }}" alt="{{ hry.nazev }}" width="1024"></div>
+  <div class="col-3 text-center text-white">
+     <div class="row fw-bold fs-1 p-2"><p>{{ hry.nazev.upper }}</p></div>
+     <div class="row fs-5">
+       <div class="col d-flex align-items-center flex-column"><p>Žánry:</p></div>
+       <div class="col d-flex align-items-center flex-column">
+       <p>
+         {% for zanr in hry.zanry.all %}
+                  {{ zanr.nazev }}
+                  {% if not forloop.last %}<br>{% endif %}
+                  {% endfor %}
+       </p>
+       </div>
+     </div>
+     <div class="row fs-5">
+       <div class="col d-flex align-items-center flex-column"><p>Vývojáři:</p></div>
+       <div class="col d-flex align-items-center flex-column">
+       <p>
+         {% for vyvojar in hry.vyvojar.all %}
+          {{ vyvojar.nazev }}
+          {% if not forloop.last %}<br>{% endif %}
+         {% endfor %}
+       </p>
+       </div>
+     </div>
+     <div class="row fs-5">
+       <div class="col d-flex align-items-center flex-column"><p>Vydavatele:</p></div>
+       <div class="col d-flex align-items-center flex-column">
+       <p>
+         {% for vydavatel in hry.vydavatel.all %}
+          {{ vydavatel.nazev }}
+          {% if not forloop.last %}<br>{% endif %}
+         {% endfor %}
+       </p>
+       </div>
+     </div>
+     <div class="row fs-5">
+       <div class="col d-flex align-items-center flex-column"><p>Datum vydání:</p></div>
+       <div class="col d-flex align-items-center flex-column">
+       <p>
+         {{ hry.datum_vydani }}
+       </p>
+       </div>
+     </div>
+     <div class="row fs-5">
+       <div class="col d-flex align-items-center flex-column"><p>Cena:</p></div>
+       <div class="col d-flex align-items-center flex-column">
+          {% if hry.cena == 0 %}
+                <p class="text-success">FREE</p>
+            {% else %}
+                <p>{{ hry.cena }} EUR</p>
+            {% endif %}
+       </div>
+  </div>
+      <div class="row fs-3 p-5 d-flex justify-content-center">
+          <div class="col-4 bg-secondary border border-dark">
+          <a class="text-light fw-bold text-decoration-none" href="/list_games">ZPĚT</a>
+              </div>
+      </div>
+  </div>
+</div>
 
 {% endblock %}

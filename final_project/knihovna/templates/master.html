@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  {% block head %}
-
   <title>{% block title %}{% endblock %}</title>
 
+  {% block head %}
   {% endblock %}
+
+  <style>
+    html {
+      position: relative;
+      min-height: 100%;
+    }
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    body {
+      padding-bottom: 100px;
+      overflow-x:hidden;
+    }
+  </style>
 
   {% load bootstrap5 %}
   {% bootstrap_css %}
