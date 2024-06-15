@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+  {% block head %}
+
+  <title>{% block title %}{% endblock %}</title>
+
+  {% endblock %}
+
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+
+{% include 'pages/navbar.html' %}
+
+{% block content %}
+{% endblock %}
+
+{% include 'pages/footer.html' %}
+
+</body>
+
+</html>

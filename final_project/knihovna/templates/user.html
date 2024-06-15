@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Profil uživatele: {{ users.jmeno }} {{ users.jmeno }}
+{% endblock %}
+
+
+{% block content %}
+<h1>{{ users.jmeno }} {{ users.prijmeni }}</h1>
+
+<p>Nickname: {{ users.nickname }}</p>
+<p>Telefon: {{ users.telefon }}</p>
+<p>Email: {{ users.email }}</p>
+
+<p>Back to <a href="/list_users">Knihovna</a></p>
+
+{% endblock %}

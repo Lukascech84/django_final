@@ -1,0 +1,52 @@
+{% extends 'master.html' %}
+
+{% block title %}Knihovna her{% endblock %}
+
+{% block content %}
+  <h2 class="display-4 text-center">Knihovna her</h2>
+  <div class="row mb-2">
+    <div class="col-12">
+    <table class="table table-dark table-striped table-hover table-responsive-lg">
+      <thead>
+        <tr>
+            <th>Fotka</th>
+            <th>Název</th>
+            <th>Žánry</th>
+            <th>Vývojář</th>
+            <th>Vydavatel</th>
+            <th>Datum vydání</th>
+            <th>Cena</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for hra in hry %}
+        <tr>
+            <td class="align-middle"><img src="{{ hra.fotka.url }}" alt="{{ hra.nazev }}" height="128"/></td>
+            <td class="align-middle"><strong><a href="{% url 'game' hra.id %}" class="text-info">{{ hra.nazev.upper }}</a></strong></td>
+            <td class="align-middle">
+                {% for zanr in hra.zanry.all %}
+                <a href="">{{ zanr.nazev }}</a>
+                {% if not forloop.last %}<br>{% endif %}
+                {% endfor %}
+            </td>
+            <td class="align-middle">
+                {% for vyvojar in hra.vyvojar.all %}
+                <a href="">{{ vyvojar.nazev }}</a>
+                {% if not forloop.last %}<br>{% endif %}
+                {% endfor %}
+            </td>
+            <td class="align-middle">
+                {% for vydavatel in hra.vydavatel.all %}
+                <a href="">{{ vydavatel.nazev }}</a>
+                {% if not forloop.last %}<br>{% endif %}
+                {% endfor %}
+            </td>
+            <td class="text-right align-middle">{{ hra.datum_vydani }}</td>
+            <td class="text-right align-middle">{{ hra.cena }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "master.html" %}
+
+{% block title %}
+  O hře: {{ hry.nazev }}
+{% endblock %}
+
+
+{% block content %}
+<h1>{{ hry.nazev }}</h1>
+
+<p>Back to <a href="/">Zpet</a></p>
+
+{% endblock %}
