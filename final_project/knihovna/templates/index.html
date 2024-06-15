@@ -2,7 +2,114 @@
 
 {% block title %}Vítejte{% endblock %}
 
+{% block head %}
+<style>
+    body {
+      color: #5a5a5a;
+    }
+    .slide:after {
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      background:rgba(0,0,0,0.7);
+    }
+
+    .carousel {
+      margin-bottom: 4rem;
+    }
+
+    .carousel-caption {
+      bottom: 3rem;
+      z-index: 10;
+    }
+
+    .carousel-item {
+      height: 32rem;
+    }
+
+    .carousel-item > img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 32rem;
+    }
+
+    .marketing .col-lg-4 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: 400;
+    }
+
+    .marketing .col-lg-4 p {
+      margin-right: .75rem;
+      margin-left: .75rem;
+    }
+
+    .featurette-divider {
+      margin: 5rem 0;
+    }
+    .featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+
+  letter-spacing: -.05rem;
+}
+
+@media (min-width: 40em) {
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 62em) {
+  .featurette-heading {
+    margin-top: 7rem;
+  }
+}
+    </style>
+{% endblock %}
+
 {% block content %}
+
+{% include 'pages/mainpage_carousel.html' %}
+
+  <div class="container marketing">
+    <div class="row">
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+        <h2>Svůj ůčet</h2>
+        <p>Zaregistrujte se ještě dnes!</p>
+        <p><a class="btn btn-secondary" href="/list_users">Podívat se &raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+        <h2>Recenze her</h2>
+        <p>Recenzování hry ještě nebylo jednodušší!</p>
+        <p><a class="btn btn-secondary" href="/list_games">Podívat se &raquo;</a></p>
+      </div>
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+        <h2>A ještě více!</h2>
+        <p>Do budoucna plánuji rožšířit možnosti</p>
+        <p><a class="btn btn-secondary" href="/about">Podívat se &raquo;</a></p>
+      </div>
+    </div>
+  </div>
 
 
 {% endblock %}

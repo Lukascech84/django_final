@@ -2,8 +2,16 @@
 
 {% block title %}Knihovna her{% endblock %}
 
+{% block head %}
+<style>
+    a {
+        text-decoration: none !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-  <h2 class="display-4 text-center">Knihovna her</h2>
+  <h2 class="display-4 text-center text-white"><strong>Knihovna her</strong></h2>
   <div class="row mb-2">
     <div class="col-12">
     <table class="table table-dark table-striped table-hover table-responsive-lg">
@@ -21,28 +29,32 @@
       <tbody>
       {% for hra in hry %}
         <tr>
-            <td class="align-middle"><img src="{{ hra.fotka.url }}" alt="{{ hra.nazev }}" height="128"/></td>
+            <td class="align-middle"><img src="{{ hra.fotka.url }}" alt="{{ hra.nazev }}" height="100" width="180"/></td>
             <td class="align-middle"><strong><a href="{% url 'game' hra.id %}" class="text-info">{{ hra.nazev.upper }}</a></strong></td>
             <td class="align-middle">
                 {% for zanr in hra.zanry.all %}
-                <a href="">{{ zanr.nazev }}</a>
+                <strong><a class="text-info" href="">{{ zanr.nazev }}</a></strong>
                 {% if not forloop.last %}<br>{% endif %}
                 {% endfor %}
             </td>
             <td class="align-middle">
                 {% for vyvojar in hra.vyvojar.all %}
-                <a href="">{{ vyvojar.nazev }}</a>
+                <strong><a class="text-info" href="">{{ vyvojar.nazev }}</a></strong>
                 {% if not forloop.last %}<br>{% endif %}
                 {% endfor %}
             </td>
             <td class="align-middle">
                 {% for vydavatel in hra.vydavatel.all %}
-                <a href="">{{ vydavatel.nazev }}</a>
+                <strong><a class="text-info" href="">{{ vydavatel.nazev }}</a></strong>
                 {% if not forloop.last %}<br>{% endif %}
                 {% endfor %}
             </td>
-            <td class="text-right align-middle">{{ hra.datum_vydani }}</td>
-            <td class="text-right align-middle">{{ hra.cena }}</td>
+            <td class="text-right align-middle"><strong>{{ hra.datum_vydani }}</strong></td>
+            {% if hra.cena == 0 %}
+                <td class="text-right align-middle"><strong class="text-success">FREE</strong></td>
+            {% else %}
+                <td class="text-right align-middle"><strong>{{ hra.cena }} EUR</strong></td>
+            {% endif %}
         </tr>
       {% endfor %}
       </tbody>
